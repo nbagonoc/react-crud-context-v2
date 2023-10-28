@@ -1,7 +1,9 @@
+import axios from 'axios'
 import { useState, useContext } from 'react'
-import {GlobalContext} from '../context/GlobalState'
-import { Link, useNavigate } from 'react-router-dom'
-// import {v4 as uuid} from 'uuid'
+import { GlobalContext } from '../context/GlobalState'
+import { useNavigate } from 'react-router-dom'
+import { Api } from '../Api'
+
 
 export const CreateForm = () => {
     const [formData, setFormData] = useState({
@@ -9,6 +11,7 @@ export const CreateForm = () => {
         weight: '',
         size: '',
     })
+    const [errors, setErrors] = useState({})
     const navigate = useNavigate()
     const { createItem } = useContext(GlobalContext)
 
@@ -20,58 +23,69 @@ export const CreateForm = () => {
         })
     }
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
-        const newItem = {
+        const item = {
             name: formData.name,
             weight: formData.weight,
             size: formData.size,
         }
-        createItem(newItem)
-        navigate('/')
+
+        try {
+            const response = await axios.post(Api, item)
+            const message = response.data.success.message
+            console.log(message)
+            setErrors({})
+            navigate('/')
+        } catch (err) {
+            setErrors(err.response.data.errors)
+        }
     }
 
     return (
         <form onSubmit={onSubmit}>
-            <div className="mb-3">
-                <label htmlFor="item-name">Name</label>
+            <div className='mb-3'>
+                <label htmlFor='item-name'>Name</label>
                 <input
-                    id="item-name"
-                    type="text"
-                    placeholder="Enter item name"
-                    // className={`form-control ${errors.name ? 'border-danger' : ''}`}
-                    className="form-control"
+                    id='item-name'
+                    name='name'
+                    autoComplete='off'
+                    type='text'
+                    placeholder='Enter item name'
+                    className={`form-control ${errors.name ? 'border-danger' : ''}`}
                     onChange={onChange}
                     value={formData.name}
                 />
-                {/* <span className='text-danger'>{errors.name ? errors.name.message : ''}</span> */}
+                <span className='text-danger'>{errors.name ? errors.name.message : ''}</span>
             </div>
-            <div className="mb-3">
-                <label htmlFor="weight">Weight</label>
+            <div className='mb-3'>
+                <label htmlFor='weight'>Weight</label>
                 <input
-                    id="weight"
-                    type="text"
-                    // className={`form-control ${errors.weight ? 'border-danger' : ''}`}
-                    className="form-control"
+                    id='weight'
+                    name='weight'
+                    type='text'
+                    placeholder='Enter item weight'
+                    className={`form-control ${errors.weight ? 'border-danger' : ''}`}
                     onChange={onChange}
                     value={formData.weight}
                 />
-                {/* <span className='text-danger'>{errors.weight ? errors.weight.message : ''}</span> */}
+                <span className='text-danger'>{errors.weight ? errors.weight.message : ''}</span>
             </div>
-            <div className="mb-3">
-                <label htmlFor="size">Size</label>
+            <div className='mb-3'>
+                <label htmlFor='size'>Size</label>
                 <input
-                    id="size"
-                    type="text"
-                    // className={`form-control ${errors.size ? 'border-danger' : ''}`}
-                    className="form-control"
+                    id='size'
+                    name='size'
+                    type='text'
+                    placeholder='Enter item size'
+                    className={`form-control ${errors.size ? 'border-danger' : ''}`}
                     onChange={onChange}
                     value={formData.size}
                 />
-                {/* <span className='text-danger'>{errors.size ? errors.size.message : ''}</span> */}
+                <span className='text-danger'>{errors.size ? errors.size.message : ''}</span>
             </div>
-            <div className="mb-3">
-                <button type="submit" className="btn btn-primary">
+            <div className='mb-3'>
+                <button type='submit' className='btn btn-primary'>
                     Save
                 </button>
             </div>
