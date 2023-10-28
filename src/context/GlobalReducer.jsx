@@ -4,10 +4,15 @@ const GlobalReducer =  (state,action) => {
             return {
                 items: action.payload
             }
-        case 'CREATE_ITEM':
+        case 'SET_MESSAGE':
             return {
-                items: [action.payload, ...state.items]
+                errors: action.payload
             }
+        case 'SET_ERRORS':
+            return {
+                errors: action.payload
+            }
+
         default:
             return state
     }

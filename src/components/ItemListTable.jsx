@@ -1,23 +1,25 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+
 import { Api } from '../Api';
+import { useGlobalContext } from '../hooks/useGlobalContext';
 
 import ItemListDetails from './ItemListDetails';
 
 const ItemListTable = () => {
-    const [items, setItems] = useState([]);
+    const {items, dispatch} = useGlobalContext()
 
     useEffect(() => {
         const getItems = async () => {
             try {
                 const response = await axios.get(Api);
-                setItems(response.data);
+                dispatch({type: 'SET_ITEMS', payload: response.data})
             } catch (err) {
                 console.error(err);
             }
         };
         getItems();
-    }, []);
+    }, [dispatch]);
 
     return (
         <table className="table">
