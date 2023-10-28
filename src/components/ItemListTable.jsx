@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
 import { Api } from './Api';
 
 import ItemListDetails from './ItemListDetails';
