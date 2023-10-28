@@ -1,6 +1,25 @@
-import { Link, useParams, useNavigate } from 'react-router-dom'
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Api } from './Api';
+
+import ItemListDetails from './ItemListDetails';
 
 const ItemListTable = () => {
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        const getItems = async () => {
+            try {
+                const response = await axios.get(Api);
+                setItems(response.data);
+            } catch (err) {
+                console.error(err);
+            }
+        };
+        getItems();
+    }, []);
+
     return (
         <table className="table">
             <thead>
@@ -11,26 +30,17 @@ const ItemListTable = () => {
                     <th>Action</th>
                 </tr>
             </thead>
+
             <tbody>
-                <tr key="">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <Link to="/" className="btn btn-secondary btn-sm me-1">
-                            View
-                        </Link>
-                        <Link to="/" className="btn btn-secondary btn-sm me-1">
-                            Edit
-                        </Link>
-                        <button className="btn btn-danger btn-sm">
-                            Delete
-                        </button>
-                    </td>
-                </tr>
+                {items.map((item) => (
+                    <ItemListDetails
+                        key={item.id ? item.id : item._id}
+                        item={item}
+                    />
+                ))}
             </tbody>
         </table>
-    )
-}
+    );
+};
 
-export default ItemListTable
+export default ItemListTable;
