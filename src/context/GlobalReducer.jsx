@@ -8,13 +8,11 @@ const GlobalReducer =  (state,action) => {
             return {
                 items: state.items.filter((item) => item._id !== action.payload._id)
             }
-        case 'SET_MESSAGE':
+        case 'CREATE_ITEM':
             return {
-                errors: action.payload
-            }
-        case 'SET_ERRORS':
-            return {
-                errors: action.payload
+                message: action.payload.message,
+                errors: action.payload.errors,
+
             }
 
         default:

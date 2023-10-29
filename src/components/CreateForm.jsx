@@ -15,8 +15,8 @@ export const CreateForm = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        dispatch({type: 'SET_ERRORS', payload: {}})
-    },[dispatch])
+        dispatch({ type: 'SET_ERRORS', payload: {} });
+    }, [dispatch]);
 
     const onChange = (e) => {
         const { name, value } = e.target;
@@ -36,12 +36,12 @@ export const CreateForm = () => {
 
         try {
             const response = await axios.post(Api, item);
-            const message = response.data.success.message;
-            dispatch({type: 'SET_MESSAGE', payload: message})
+            const message = response.data.success;
+            dispatch({ type: 'CREATE_ITEM', payload: message });
             navigate('/');
         } catch (err) {
-            const errors = err.response.data.errors;
-            dispatch({type: 'SET_ERRORS', payload: errors})
+            const errors = err.response.data;
+            dispatch({ type: 'CREATE_ITEM', payload: errors });
         }
     };
 
@@ -56,13 +56,13 @@ export const CreateForm = () => {
                     type="text"
                     placeholder="Enter item name"
                     className={`form-control ${
-                        errors.name ? 'border-danger' : ''
+                        errors && errors.name ? 'border-danger' : ''
                     }`}
                     onChange={onChange}
                     value={formData.name}
                 />
                 <span className="text-danger">
-                    {errors.name ? errors.name.message : ''}
+                    {errors && errors.name ? errors.name.message : ''}
                 </span>
             </div>
             <div className="mb-3">
@@ -73,13 +73,13 @@ export const CreateForm = () => {
                     type="text"
                     placeholder="Enter item weight"
                     className={`form-control ${
-                        errors.weight ? 'border-danger' : ''
+                        errors && errors.weight ? 'border-danger' : ''
                     }`}
                     onChange={onChange}
                     value={formData.weight}
                 />
                 <span className="text-danger">
-                    {errors.weight ? errors.weight.message : ''}
+                    {errors && errors.weight ? errors.weight.message : ''}
                 </span>
             </div>
             <div className="mb-3">
@@ -90,13 +90,13 @@ export const CreateForm = () => {
                     type="text"
                     placeholder="Enter item size"
                     className={`form-control ${
-                        errors.size ? 'border-danger' : ''
+                        errors && errors.size ? 'border-danger' : ''
                     }`}
                     onChange={onChange}
                     value={formData.size}
                 />
                 <span className="text-danger">
-                    {errors.size ? errors.size.message : ''}
+                    {errors && errors.size ? errors.size.message : ''}
                 </span>
             </div>
             <div className="mb-3">

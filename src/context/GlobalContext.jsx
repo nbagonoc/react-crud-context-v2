@@ -7,7 +7,11 @@ export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(GlobalReducer, {
         items: [],
         message: null,
-        errors: {},
+        errors: {
+            name: '',
+            weight: '',
+            size: '',
+        },
     });
 
     return (
