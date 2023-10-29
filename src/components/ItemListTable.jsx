@@ -45,7 +45,7 @@ const ItemListTable = () => {
             ) : (
                 <tr>
                     <td colSpan="4" className="text-center">
-                        { message }
+                        No items found...
                     </td>
                 </tr>
                 )

@@ -12,7 +12,8 @@ const ItemListActions = ({ _id }) => {
         try {
             e.preventDefault();
             const response = await axios.delete(`${Api}/${_id}`);
-            dispatch({ type: 'DELETE_ITEM', payload: { _id } });
+            const message = response.data.success.message;
+            dispatch({ type: 'DELETE_ITEM', payload: { _id, message } });
         } catch (err) {
             console.error(err);
         }
