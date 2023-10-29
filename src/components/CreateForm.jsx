@@ -1,49 +1,45 @@
-import axios from 'axios';
-import { useState, useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { Api } from '../Api';
-import { useGlobalContext } from '../hooks/useGlobalContext';
+import { Api } from '../Api'
+import { useGlobalContext } from '../hooks/useGlobalContext'
 
 export const CreateForm = () => {
-    const { errors, dispatch } = useGlobalContext();
+    const { errors, dispatch } = useGlobalContext()
     const [formData, setFormData] = useState({
         name: '',
         weight: '',
         size: '',
-    });
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        dispatch({ type: 'SET_ERRORS', payload: {} });
-    }, [dispatch]);
+    })
+    const navigate = useNavigate()
 
     const onChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value } = e.target
         setFormData({
             ...formData,
             [name]: value,
-        });
-    };
+        })
+    }
 
     const onSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault()
         const item = {
             name: formData.name,
             weight: formData.weight,
             size: formData.size,
-        };
+        }
 
         try {
-            const response = await axios.post(Api, item);
-            const message = response.data.success;
-            dispatch({ type: 'CREATE_ITEM', payload: message });
-            navigate('/');
+            const response = await axios.post(Api, item)
+            const message = response.data.success.message
+            dispatch({ type: 'CREATE_ITEM', payload: {message} })
+            navigate('/')
         } catch (err) {
-            const errors = err.response.data;
-            dispatch({ type: 'CREATE_ITEM', payload: errors });
+            const errors = err.response.data
+            dispatch({ type: 'CREATE_ITEM', payload: errors })
         }
-    };
+    }
 
     return (
         <form onSubmit={onSubmit}>
@@ -105,7 +101,7 @@ export const CreateForm = () => {
                 </button>
             </div>
         </form>
-    );
-};
+    )
+}
 
-export default CreateForm;
+export default CreateForm
