@@ -7,15 +7,17 @@ import { useGlobalContext } from '../hooks/useGlobalContext';
 import ItemListDetails from './ItemListDetails';
 
 const ItemListTable = () => {
-    const {items, dispatch} = useGlobalContext()
+    const {items, message, dispatch} = useGlobalContext()
 
     useEffect(() => {
         const getItems = async () => {
             try {
                 const response = await axios.get(Api);
-                dispatch({type: 'SET_ITEMS', payload: response.data})
+                const items = response.data;
+                dispatch({type: 'SET_ITEMS', payload: {items}})
             } catch (err) {
-                console.error(err);
+                const message = err.response.data.errors;
+                dispatch({type: 'SET_ITEMS', payload: message})
             }
         };
         getItems();
@@ -43,7 +45,7 @@ const ItemListTable = () => {
             ) : (
                 <tr>
                     <td colSpan="4" className="text-center">
-                        No items found.
+                        { message }
                     </td>
                 </tr>
                 )
