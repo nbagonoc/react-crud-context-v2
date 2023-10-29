@@ -8,7 +8,7 @@ const ItemListDetails = ({ item }) => {
             <td>{item.name}</td>
             <td>{item.weight}</td>
             <td>{item.size}</td>
-            <ItemListActions _id={item.id ? item.id : item._id} />
+            <ItemListActions _id={item._id} />
         </tr>
     );
 };

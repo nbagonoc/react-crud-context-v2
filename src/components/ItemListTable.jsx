@@ -36,7 +36,7 @@ const ItemListTable = () => {
             {items && items.length >= 1 ? (
                 items.map((item) => (
                     <ItemListDetails
-                        key={item.id ? item.id : item._id}
+                        key={item._id}
                         item={item}
                     />
                 ))
