@@ -3,17 +3,22 @@ const GlobalReducer =  (state,action) => {
         case 'SET_ITEMS':
             return {
                 items: action.payload.items,
-                message: state.message,
+                alert: state.alert,
             }
         case 'DELETE_ITEM':
             return {
                 items: state.items.filter((item) => item._id !== action.payload._id),
-                message: action.payload.message,
+                alert: action.payload.alert,
             }
         case 'CREATE_ITEM':
             return {
-                message: action.payload.message,
+                alert: action.payload.alert,
                 errors: action.payload.errors,
+            }
+        case 'CLEAR_ALERT':
+            return {
+                ...state,
+                alert: {},
             }
         default:
             return state

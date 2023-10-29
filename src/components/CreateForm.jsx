@@ -31,9 +31,17 @@ export const CreateForm = () => {
         }
 
         try {
-            const response = await axios.post(Api, item)
-            const message = response.data.success.message
-            dispatch({ type: 'CREATE_ITEM', payload: {message} })
+            const response = await axios.post(Api, item);
+            const message = response.data.success.message;
+            dispatch({
+                type: 'CREATE_ITEM',
+                payload: {
+                    alert: {
+                        message,
+                        success: true,
+                    },
+                },
+            })
             navigate('/')
         } catch (err) {
             const errors = err.response.data

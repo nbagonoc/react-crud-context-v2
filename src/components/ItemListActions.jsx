@@ -1,23 +1,42 @@
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { PropTypes } from 'prop-types';
+import axios from 'axios'
+import { Link } from 'react-router-dom'
+import { PropTypes } from 'prop-types'
 
-import { Api } from '../Api';
-import { useGlobalContext } from '../hooks/useGlobalContext';
+import { Api } from '../Api'
+import { useGlobalContext } from '../hooks/useGlobalContext'
 
 const ItemListActions = ({ _id }) => {
-    const { dispatch } = useGlobalContext();
+    const { dispatch } = useGlobalContext()
 
     const handleDelete = async (e, _id) => {
         try {
-            e.preventDefault();
-            const response = await axios.delete(`${Api}/${_id}`);
-            const message = response.data.success.message;
-            dispatch({ type: 'DELETE_ITEM', payload: { _id, message } });
+            e.preventDefault()
+            const response = await axios.delete(`${Api}/${_id}`)
+            const message = response.data.success.message
+            dispatch({
+                type: 'DELETE_ITEM',
+                payload: {
+                    _id,
+                    alert: {
+                        message,
+                        success: true,
+                    },
+                },
+            })
         } catch (err) {
-            console.error(err);
+            const message = err.response.data.errors.message
+            dispatch({
+                type: 'DELETE_ITEM',
+                payload: {
+                    _id,
+                    alert: {
+                        message,
+                        success: true,
+                    },
+                },
+            })
         }
-    };
+    }
 
     return (
         <td>
@@ -34,11 +53,11 @@ const ItemListActions = ({ _id }) => {
                 Delete
             </button>
         </td>
-    );
-};
+    )
+}
 
 ItemListActions.propTypes = {
     _id: PropTypes.string.isRequired,
 }
 
-export default ItemListActions;
+export default ItemListActions

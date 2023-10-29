@@ -3,11 +3,10 @@ import { useEffect } from 'react';
 
 import { Api } from '../Api';
 import { useGlobalContext } from '../hooks/useGlobalContext';
-
 import ItemListDetails from './ItemListDetails';
 
 const ItemListTable = () => {
-    const {items, message, dispatch} = useGlobalContext()
+    const {items, dispatch} = useGlobalContext()
 
     useEffect(() => {
         const getItems = async () => {
@@ -16,8 +15,7 @@ const ItemListTable = () => {
                 const items = response.data;
                 dispatch({type: 'SET_ITEMS', payload: {items}})
             } catch (err) {
-                const message = err.response.data.errors;
-                dispatch({type: 'SET_ITEMS', payload: message})
+                console.log(err); //just log error. No need to show to user
             }
         };
         getItems();
@@ -45,7 +43,7 @@ const ItemListTable = () => {
             ) : (
                 <tr>
                     <td colSpan="4" className="text-center">
-                        No items found...
+                        No items found... 
                     </td>
                 </tr>
                 )

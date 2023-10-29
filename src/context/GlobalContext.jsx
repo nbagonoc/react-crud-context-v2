@@ -7,7 +7,7 @@ export const GlobalContext = createContext()
 export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(GlobalReducer, {
         items: [],
-        message: '',
+        alert: {},//message(string), success(boolean)
         errors: {},
     })
 
