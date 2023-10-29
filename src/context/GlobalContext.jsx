@@ -18,6 +18,6 @@ export const GlobalProvider = ({ children }) => {
     )
 }
 
-GlobalContext.propTypes = {
+GlobalProvider.propTypes = {
     children: PropTypes.node.isRequired,
 }
