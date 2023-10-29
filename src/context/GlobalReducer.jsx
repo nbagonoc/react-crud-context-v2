@@ -12,7 +12,6 @@ const GlobalReducer =  (state,action) => {
             return {
                 message: action.payload.message,
                 errors: action.payload.errors,
-
             }
 
         default:

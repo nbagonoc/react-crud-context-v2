@@ -33,12 +33,21 @@ const ItemListTable = () => {
             </thead>
 
             <tbody>
-                {items.map((item) => (
+            {items && items.length >= 1 ? (
+                items.map((item) => (
                     <ItemListDetails
                         key={item.id ? item.id : item._id}
                         item={item}
                     />
-                ))}
+                ))
+            ) : (
+                <tr>
+                    <td colSpan="4" className="text-center">
+                        No items found.
+                    </td>
+                </tr>
+                )
+            }
             </tbody>
         </table>
     );
