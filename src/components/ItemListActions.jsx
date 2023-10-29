@@ -28,10 +28,9 @@ const ItemListActions = ({ _id }) => {
             dispatch({
                 type: 'DELETE_ITEM',
                 payload: {
-                    _id,
                     alert: {
                         message,
-                        success: true,
+                        success: false,
                     },
                 },
             })
