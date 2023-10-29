@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
+
+import ItemListActions from './ItemListActions';
 
 const ItemListDetails = ({ item }) => {
     return (
@@ -6,17 +8,13 @@ const ItemListDetails = ({ item }) => {
             <td>{item.name}</td>
             <td>{item.weight}</td>
             <td>{item.size}</td>
-            <td>
-                <Link to="/" className="btn btn-secondary btn-sm me-1">
-                    View
-                </Link>
-                <Link to="/" className="btn btn-secondary btn-sm me-1">
-                    Edit
-                </Link>
-                <button className="btn btn-danger btn-sm">Delete</button>
-            </td>
+            <ItemListActions _id={item.id ? item.id : item._id} />
         </tr>
     );
+};
+
+ItemListDetails.propTypes = {
+    item: PropTypes.object.isRequired,
 };
 
 export default ItemListDetails;

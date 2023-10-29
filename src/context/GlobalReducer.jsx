@@ -2,7 +2,11 @@ const GlobalReducer =  (state,action) => {
     switch(action.type){
         case 'SET_ITEMS':
             return {
-                items: action.payload
+                items: action.payload,
+            }
+        case 'DELETE_ITEM':
+            return {
+                items: state.items.filter((item) => item._id !== action.payload._id)
             }
         case 'SET_MESSAGE':
             return {
