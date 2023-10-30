@@ -1,4 +1,4 @@
-import CreateFormContainer from "../components/CreateFormContainer"
+import CreateFormContainer from "../components/create/CreateFormContainer"
 
 const Create = () => {
     return (

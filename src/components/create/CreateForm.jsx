@@ -2,8 +2,8 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { Api } from '../Api'
-import { useGlobalContext } from '../hooks/useGlobalContext'
+import { Api } from '../../Api'
+import { useGlobalContext } from '../../hooks/useGlobalContext'
 
 export const CreateForm = () => {
     const { errors, dispatch } = useGlobalContext()
