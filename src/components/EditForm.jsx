@@ -17,11 +17,6 @@ export const EditForm = () => {
     })
     const navigate = useNavigate()
 
-    // reset states when component unmounts
-    const resetState = useCallback(() => {
-        dispatch({ type: 'SET_ITEM', payload: { item: {}, alert: {} } })
-    }, [dispatch])
-
     useEffect(() => {
         dispatch({ type: 'CLEAR_ALERT' }) //clear-out/reset any alert messages on globalstate
 
@@ -49,8 +44,7 @@ export const EditForm = () => {
         }
 
         getItem()
-        return resetState // reset states when component unmounts
-    }, [_id, dispatch, resetState])
+    }, [_id, dispatch])
 
     const onChange = (e) => {
         const { name, value } = e.target
