@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { Api } from '../Api'
@@ -56,13 +56,13 @@ export const EditForm = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault()
-        const item = {
-            name: formData.name,
-            weight: formData.weight,
-            size: formData.size,
-        }
 
         try {
+            const item = {
+                name: formData.name,
+                weight: formData.weight,
+                size: formData.size,
+            }
             const response = await axios.put(`${Api}/${_id}`, item)
             const message = response.data.success.message
             dispatch({
@@ -76,8 +76,8 @@ export const EditForm = () => {
             })
             navigate('/')
         } catch (err) {
-            const errors = err.response.data
-            dispatch({ type: 'EDIT_ITEM', payload: errors })
+            const errors = err.response.data.errors
+            dispatch({ type: 'EDIT_ITEM', payload: { errors, alert: {} } })
         }
     }
 
@@ -97,7 +97,9 @@ export const EditForm = () => {
                                 errors && errors.name ? 'border-danger' : ''
                             }`}
                             onChange={onChange}
-                            value={formData.name}
+                            value={
+                                formData && formData.name ? formData.name : ''
+                            }
                         />
                         <span className="text-danger">
                             {errors && errors.name ? errors.name.message : ''}
@@ -114,7 +116,11 @@ export const EditForm = () => {
                                 errors && errors.weight ? 'border-danger' : ''
                             }`}
                             onChange={onChange}
-                            value={formData.weight}
+                            value={
+                                formData && formData.weight
+                                    ? formData.weight
+                                    : ''
+                            }
                         />
                         <span className="text-danger">
                             {errors && errors.weight
@@ -133,7 +139,9 @@ export const EditForm = () => {
                                 errors && errors.size ? 'border-danger' : ''
                             }`}
                             onChange={onChange}
-                            value={formData.size}
+                            value={
+                                formData && formData.size ? formData.size : ''
+                            }
                         />
                         <span className="text-danger">
                             {errors && errors.size ? errors.size.message : ''}
