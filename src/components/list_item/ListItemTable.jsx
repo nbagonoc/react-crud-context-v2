@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 
-import { Api } from '../Api';
-import { useGlobalContext } from '../hooks/useGlobalContext';
-import ItemListDetails from './ItemListDetails';
+import { Api } from '../../Api';
+import { useGlobalContext } from '../../hooks/useGlobalContext';
+import ListItemDetails from './ListItemDetails';
 
-const ItemListTable = () => {
+const ListItemTable = () => {
     const {items, dispatch} = useGlobalContext()
 
     useEffect(() => {
@@ -35,7 +35,7 @@ const ItemListTable = () => {
             <tbody>
             {items && items.length >= 1 ? (
                 items.map((item) => (
-                    <ItemListDetails
+                    <ListItemDetails
                         key={item._id}
                         item={item}
                     />
@@ -53,4 +53,4 @@ const ItemListTable = () => {
     );
 };
 
-export default ItemListTable;
+export default ListItemTable;

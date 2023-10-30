@@ -1,20 +1,20 @@
 import { PropTypes } from 'prop-types';
 
-import ItemListActions from './ItemListActions';
+import ListItemActions from './ListItemActions';
 
-const ItemListDetails = ({ item }) => {
+const ListItemDetails = ({ item }) => {
     return (
         <tr>
             <td>{item.name}</td>
             <td>{item.weight}</td>
             <td>{item.size}</td>
-            <ItemListActions _id={item._id} />
+            <ListItemActions _id={item._id} />
         </tr>
     );
 };
 
-ItemListDetails.propTypes = {
+ListItemDetails.propTypes = {
     item: PropTypes.object.isRequired,
 };
 
-export default ItemListDetails;
+export default ListItemDetails;

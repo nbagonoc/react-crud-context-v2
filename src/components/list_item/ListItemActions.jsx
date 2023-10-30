@@ -2,10 +2,10 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { PropTypes } from 'prop-types'
 
-import { Api } from '../Api'
-import { useGlobalContext } from '../hooks/useGlobalContext'
+import { Api } from '../../Api'
+import { useGlobalContext } from '../../hooks/useGlobalContext'
 
-const ItemListActions = ({ _id }) => {
+const ListItemActions = ({ _id }) => {
     const { dispatch } = useGlobalContext()
 
     const handleDelete = async (e, _id) => {
@@ -55,8 +55,8 @@ const ItemListActions = ({ _id }) => {
     )
 }
 
-ItemListActions.propTypes = {
+ListItemActions.propTypes = {
     _id: PropTypes.string.isRequired,
 }
 
-export default ItemListActions
+export default ListItemActions

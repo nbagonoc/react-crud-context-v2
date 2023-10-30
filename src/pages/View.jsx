@@ -1,4 +1,4 @@
-import ViewContainer from '../components/ViewContainer'
+import ViewContainer from '../components/view_item/ViewContainer'
 
 const View = () => {
   return (

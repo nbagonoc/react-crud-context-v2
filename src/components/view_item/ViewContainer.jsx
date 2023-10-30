@@ -2,9 +2,9 @@ import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
 import { useEffect, useCallback } from 'react'
 
-import { Api } from '../Api'
-import AlertMessage from './partials/AlertMessage'
-import { useGlobalContext } from '../hooks/useGlobalContext'
+import { Api } from '../../Api'
+import AlertMessage from '../partials/AlertMessage'
+import { useGlobalContext } from '../../hooks/useGlobalContext'
 import ViewDetails from './ViewDetails'
 
 const ViewContainer = () => {
