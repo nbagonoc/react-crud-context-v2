@@ -18,11 +18,15 @@ const GlobalReducer = (state, action) => {
                 alert: action.payload.alert,
             }
         case 'CREATE_ITEM':
+            console.log('triggered')
+            console.log(action.payload.alert)
             return {
                 alert: action.payload.alert,
                 errors: action.payload.errors,
             }
         case 'EDIT_ITEM':
+            // console.log('triggered')
+            // console.log(action.payload.alert)
             return {
                 alert: action.payload.alert,
                 errors: action.payload.errors,

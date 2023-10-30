@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { Api } from '../Api'
-import AlertMessage from './AlertMessage'
+import AlertMessage from './partials/AlertMessage'
 import { useGlobalContext } from '../hooks/useGlobalContext'
 
 export const EditForm = () => {

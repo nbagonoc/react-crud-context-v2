@@ -1,5 +1,5 @@
 import ItemListTable from './ItemListTable';
-import AlertMessage from './AlertMessage';
+import AlertMessage from './partials/AlertMessage';
 
 const ItemListContainer = () => {
 

@@ -3,7 +3,7 @@ import Home from './pages/Home'
 import View from './pages/View'
 import Create from './pages/Create'
 import Edit from './pages/edit'
-import Navigation from './components/Navigation'
+import Navigation from './components/partials/Navigation'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 

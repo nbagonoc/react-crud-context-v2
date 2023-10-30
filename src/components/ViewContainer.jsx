@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { useEffect, useCallback } from 'react'
 
 import { Api } from '../Api'
-import AlertMessage from './AlertMessage'
+import AlertMessage from './partials/AlertMessage'
 import { useGlobalContext } from '../hooks/useGlobalContext'
 import ViewDetails from './ViewDetails'
 
