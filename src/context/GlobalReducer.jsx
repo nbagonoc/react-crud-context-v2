@@ -1,5 +1,5 @@
-const GlobalReducer =  (state,action) => {
-    switch(action.type){
+const GlobalReducer = (state, action) => {
+    switch (action.type) {
         case 'SET_ITEM':
             return {
                 item: action.payload.item,
@@ -12,7 +12,9 @@ const GlobalReducer =  (state,action) => {
             }
         case 'DELETE_ITEM':
             return {
-                items: state.items.filter((item) => item._id !== action.payload._id),
+                items: state.items.filter(
+                    (item) => item._id !== action.payload._id
+                ),
                 alert: action.payload.alert,
             }
         case 'CREATE_ITEM':
@@ -30,4 +32,4 @@ const GlobalReducer =  (state,action) => {
     }
 }
 
-export default GlobalReducer;
+export default GlobalReducer
