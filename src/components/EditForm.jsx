@@ -23,7 +23,7 @@ export const EditForm = () => {
     }, [dispatch])
 
     useEffect(() => {
-        dispatch({ type: 'CLEAR_ALERT' })
+        dispatch({ type: 'CLEAR_ALERT' }) //clear-out/reset any alert messages on globalstate
 
         const getItem = async () => {
             try {

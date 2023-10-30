@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { Api } from '../Api'
@@ -13,6 +13,10 @@ export const CreateForm = () => {
         size: '',
     })
     const navigate = useNavigate()
+
+    useEffect(() => {
+        dispatch({ type: 'CLEAR_ALERT' }) //clear-out/reset any alert messages on globalstate
+    },[dispatch])
 
     const onChange = (e) => {
         const { name, value } = e.target
