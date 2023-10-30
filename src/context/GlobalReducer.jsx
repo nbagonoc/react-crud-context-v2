@@ -1,5 +1,10 @@
 const GlobalReducer =  (state,action) => {
     switch(action.type){
+        case 'SET_ITEM':
+            return {
+                item: action.payload.item,
+                alert: action.payload.alert,
+            }
         case 'SET_ITEMS':
             return {
                 items: action.payload.items,

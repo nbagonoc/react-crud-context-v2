@@ -1,5 +1,9 @@
 import CreateFormContainer from "../components/CreateFormContainer"
 
-const Create = () => <CreateFormContainer />
+const Create = () => {
+    return (
+      <CreateFormContainer/>
+    )
+}
 
 export default Create
