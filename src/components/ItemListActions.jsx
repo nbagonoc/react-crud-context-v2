@@ -42,7 +42,7 @@ const ItemListActions = ({ _id }) => {
             <Link to={`/view/${_id}`} className="btn btn-secondary btn-sm me-1">
                 View
             </Link>
-            <Link to="/" className="btn btn-secondary btn-sm me-1">
+            <Link to={`/edit/${_id}`} className="btn btn-secondary btn-sm me-1">
                 Edit
             </Link>
             <button

@@ -22,6 +22,11 @@ const GlobalReducer = (state, action) => {
                 alert: action.payload.alert,
                 errors: action.payload.errors,
             }
+        case 'EDIT_ITEM':
+            return {
+                alert: action.payload.alert,
+                errors: action.payload.errors,
+            }
         case 'CLEAR_ALERT':
             return {
                 ...state,

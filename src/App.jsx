@@ -2,7 +2,7 @@ import './App.css'
 import Home from './pages/Home'
 import View from './pages/View'
 import Create from './pages/Create'
-// import Edit from './pages/edit'
+import Edit from './pages/edit'
 import Navigation from './components/Navigation'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
@@ -16,7 +16,7 @@ const App = () => {
                     <Route path='/' element={<Home/>} />
                     <Route path='/view/:_id' element={<View/>} />
                     <Route path='/create' element={<Create/>} />
-                    {/* <Route path='/edit/:id' element={<Edit/>} /> */}
+                    <Route path='/edit/:_id' element={<Edit/>} />
                 </Routes>
             </div>
         </BrowserRouter>
