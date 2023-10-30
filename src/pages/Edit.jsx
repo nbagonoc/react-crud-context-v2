@@ -1,4 +1,4 @@
-import EditFormContainer from "../components/EditFormContainer"
+import EditFormContainer from "../components/edit/EditFormContainer"
 
 const Edit = () => {
   return (

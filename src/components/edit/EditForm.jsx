@@ -2,9 +2,9 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { Api } from '../Api'
-import AlertMessage from './partials/AlertMessage'
-import { useGlobalContext } from '../hooks/useGlobalContext'
+import { Api } from '../../Api'
+import AlertMessage from '../partials/AlertMessage'
+import { useGlobalContext } from '../../hooks/useGlobalContext'
 
 export const EditForm = () => {
     const { _id } = useParams()
