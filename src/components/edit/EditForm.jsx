@@ -30,7 +30,10 @@ export const EditForm = () => {
                     size: item.size,
                 })
             } catch (err) {
-                const message = err.response.data.errors.message
+                let message = 'Item not found'
+                if (err.response && err.response.data) {
+                    message = err.response.data.errors.message
+                }
                 dispatch({
                     type: 'SET_ITEM',
                     payload: {
