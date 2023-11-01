@@ -21,6 +21,11 @@ describe('View item', () => {
         expect(text).toBeVisible()
     })
 
+    test('Renders AlertMessage component', () => {
+        const AlertMessage = screen.getByTestId('AlertMessage')
+        expect(AlertMessage).toBeTruthy()
+    })
+
     test('Renders ViewDetails component', () => {
         const name = screen.getByText(/Name:/i)
         const weight = screen.getByText(/Weight:/i)
