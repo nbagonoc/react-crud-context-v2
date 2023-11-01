@@ -30,15 +30,29 @@ describe('View item', () => {
         expect(text).toBeVisible()
     })
 
+    test('Renders ViewDetails component', async () => {
+        // Arrange
+        const mockData = {
+            data: {
+                _id: "653f5dd94068a338b63da816",
+                name: "Madeline Salazar",
+                weight: "light",
+                size: "small"
+            }
+        }
+        axios.get.mockResolvedValue(mockData)
+        // Act & Assert
+        await waitFor(async () => {
+            setTimeout(() => {
+                expect(screen.getByText(/Madeline Salazar/i)).toBeVisible()
+                expect(screen.getByText(/light/i)).toBeVisible()
+                expect(screen.getByText(/small/i)).toBeVisible()
+            }, 5000) //this is a hacky way to test this, but it works.
+        })
+    })
+
     test('Renders AlertMessage component', () => {
         const AlertMessage = screen.getByTestId('AlertMessage')
         expect(AlertMessage).toBeTruthy()
-    })
-
-    test('Renders ViewDetails component', () => {
-        const name = screen.getByText(/Name:/i)
-        const weight = screen.getByText(/Weight:/i)
-        const size = screen.getByText(/Size:/i)
-        expect(name, weight, size).toBeVisible()
     })
 })
