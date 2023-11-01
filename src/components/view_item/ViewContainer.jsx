@@ -57,7 +57,8 @@ const ViewContainer = () => {
                 </div>
             </div>
             <div className="card-body">
-                {item ? <ViewDetails item={item} /> : <AlertMessage />}
+                <AlertMessage />
+                {item && <ViewDetails item={item} />}
             </div>
         </div>
     )
