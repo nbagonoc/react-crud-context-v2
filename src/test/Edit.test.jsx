@@ -1,10 +1,12 @@
 import { screen, render } from '@testing-library/react'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { test, describe, expect, beforeEach} from 'vitest'
+import { test, describe, expect, beforeEach, vi} from 'vitest'
+import axios from 'axios'
 
 import {GlobalProvider} from '../context/GlobalContext';
 import EditFormContainer from '../components/edit/EditFormContainer'
-import EditForm from '../components/edit/EditForm'
+
+vi.mock('axios')
 
 describe('Edit item', () => {
     beforeEach(()=> {
@@ -15,6 +17,10 @@ describe('Edit item', () => {
                 </Router>
             </GlobalProvider>
         )
+    })
+
+    test('API is being called', () => {
+        expect(axios.get).toHaveBeenCalledTimes(1)
     })
 
     test('Renders EditFormContainer component', () => {
