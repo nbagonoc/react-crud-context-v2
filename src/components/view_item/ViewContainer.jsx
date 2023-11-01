@@ -23,7 +23,10 @@ const ViewContainer = () => {
                 const item = response.data
                 dispatch({ type: 'SET_ITEM', payload: { item } })
             } catch (err) {
-                const message = err.response.data.errors.message
+                let message = 'Something went wrong!'
+                if(err && err.response){
+                    message = err.response.data.errors.message
+                }
                 dispatch({
                     type: 'SET_ITEM',
                     payload: {
