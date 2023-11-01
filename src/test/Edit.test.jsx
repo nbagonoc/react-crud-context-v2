@@ -1,4 +1,4 @@
-import { screen, render } from '@testing-library/react'
+import { screen, render, waitFor } from '@testing-library/react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { test, describe, expect, beforeEach, vi} from 'vitest'
 import axios from 'axios'
@@ -19,8 +19,10 @@ describe('Edit item', () => {
         )
     })
 
-    test('API is being called', () => {
-        expect(axios.get).toHaveBeenCalledTimes(1)
+    test('API is being called', async () => {
+        await waitFor(() => {
+            expect(axios.get).toHaveBeenCalledTimes(1)
+        })
     })
 
     test('Renders EditFormContainer component', () => {

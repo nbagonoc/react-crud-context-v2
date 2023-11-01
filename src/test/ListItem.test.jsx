@@ -1,4 +1,4 @@
-import { screen, render } from '@testing-library/react'
+import { screen, render, waitFor } from '@testing-library/react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { test, describe, expect, beforeEach, vi} from 'vitest'
 import axios from 'axios'
@@ -19,27 +19,31 @@ describe('List item', () => {
         )
     })
 
-    test('API is being called', () => {
-        // Not using mockData here, since this is only unit-test, not integration
-        // const mockData = axios.get.mockResolvedValue([
-        //     {
-        //         _id: '653f5dd94068a338b63da816',
-        //         name: 'Madeline Salazar',
-        //         weight: 'Repellendus Eos cu',
-        //         size: 'Ea eligendi qui vel ',
-        //         date: '2023-10-30T07:40:09.870Z',
-        //         __v: 0,
-        //     },
-        //     {
-        //         _id: '653f5d6b4068a338b63da813',
-        //         name: 'Nevada Mcdonald',
-        //         weight: 'Temporibus dolores q',
-        //         size: 'Beatae laudantium v',
-        //         date: '2023-10-30T07:38:19.901Z',
-        //         __v: 0,
-        //     },
-        // ])
-        expect(axios.get).toHaveBeenCalledTimes(1)//all i really care for the front-end is the API has been called
+    test('API is being called', async () => {
+        const mockData = [
+            {
+                _id: '653f5dd94068a338b63da816',
+                name: 'Madeline Salazar',
+                weight: 'Repellendus Eos cu',
+                size: 'Ea eligendi qui vel ',
+                date: '2023-10-30T07:40:09.870Z',
+                __v: 0,
+            },
+            {
+                _id: '653f5d6b4068a338b63da813',
+                name: 'Nevada Mcdonald',
+                weight: 'Temporibus dolores q',
+                size: 'Beatae laudantium v',
+                date: '2023-10-30T07:38:19.901Z',
+                __v: 0,
+            },
+        ]
+        axios.get.mockResolvedValue(mockData)
+        //were not really testing the data, just the api call
+        //with that being said, data above may be removed
+        await waitFor(() => {
+            expect(axios.get).toHaveBeenCalledTimes(1)
+        })
     })
 
     test('Renders ListItemContainer component', () => {
