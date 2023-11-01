@@ -34,7 +34,7 @@ describe('Edit item', () => {
     test('Renders EditForm component', async () => {
         // Arrange
         const mockData = {
-            data:{
+            data: {
                 _id: "653f5dd94068a338b63da816",
                 name: "Madeline Salazar",
                 weight: "light",
