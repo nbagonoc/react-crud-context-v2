@@ -30,7 +30,7 @@ export const EditForm = () => {
                     size: item.size,
                 })
             } catch (err) {
-                let message = 'Item not found'
+                let message = 'Something went wrong!'
                 if (err.response && err.response.data) {
                     message = err.response.data.errors.message
                 }
