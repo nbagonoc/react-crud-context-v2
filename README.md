@@ -1,6 +1,6 @@
 ## React + Vite
 
-A simple React CRUD app with alerts with context-API
+A simple React CRUD app with context-API and unit-testing
 
 ## How to run locally:
 
@@ -12,4 +12,5 @@ npm install
 - Serve by running:
 ```
 npm run dev
+npm run test
 ```
