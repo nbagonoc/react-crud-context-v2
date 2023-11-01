@@ -4,7 +4,7 @@ import ListItemActions from './ListItemActions';
 
 const ListItemDetails = ({ item }) => {
     return (
-        <tr>
+        <tr data-testid='ListItemDetails'>
             <td>{item.name}</td>
             <td>{item.weight}</td>
             <td>{item.size}</td>

@@ -4,8 +4,8 @@ import AlertMessage from '../partials/AlertMessage';
 const ListItemContainer = () => {
 
     return (
-        <div className="card">
-            <div className="card-body">
+        <div className='card' data-testid='ListItemContainer'>
+            <div className='card-body'>
                     <AlertMessage/>
                     <ListItemTable/>
             </div>
