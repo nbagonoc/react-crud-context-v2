@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 
-import { Api } from '../../Api';
+import { API } from '../../API';
 import { useGlobalContext } from '../../hooks/useGlobalContext';
 import ListItemDetails from './ListItemDetails';
 
@@ -11,7 +11,7 @@ const ListItemTable = () => {
     useEffect(() => {
         const getItems = async () => {
             try {
-                const response = await axios.get(Api);
+                const response = await axios.get(API);
                 const items = response.data;
                 dispatch({type: 'SET_ITEMS', payload: {items}})
             } catch (err) {

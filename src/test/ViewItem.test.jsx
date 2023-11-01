@@ -19,7 +19,7 @@ describe('View item', () => {
         )
     })
 
-    test('Api is being called', () => {
+    test('API is being called', () => {
         // Not using mockData here, since this is only unit-test, not integration
         // const mockData = axios.get.mockResolvedValue([
         //     {

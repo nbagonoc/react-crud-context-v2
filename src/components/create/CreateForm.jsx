@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { Api } from '../../Api'
+import { API } from '../../API'
 import { useGlobalContext } from '../../hooks/useGlobalContext'
 
 export const CreateForm = () => {
@@ -35,7 +35,7 @@ export const CreateForm = () => {
         }
 
         try {
-            const response = await axios.post(Api, item);
+            const response = await axios.post(API, item);
             const message = response.data.success.message;
             dispatch({
                 type: 'CREATE_ITEM',

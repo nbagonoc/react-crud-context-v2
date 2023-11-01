@@ -2,7 +2,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { PropTypes } from 'prop-types'
 
-import { Api } from '../../Api'
+import { API } from '../../API'
 import { useGlobalContext } from '../../hooks/useGlobalContext'
 
 const ListItemActions = ({ _id }) => {
@@ -11,7 +11,7 @@ const ListItemActions = ({ _id }) => {
     const handleDelete = async (e, _id) => {
         try {
             e.preventDefault()
-            const response = await axios.delete(`${Api}/${_id}`)
+            const response = await axios.delete(`${API}/${_id}`)
             const message = response.data.success.message
             dispatch({
                 type: 'DELETE_ITEM',

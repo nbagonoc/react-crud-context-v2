@@ -2,7 +2,7 @@ import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
 import { useEffect, useCallback } from 'react'
 
-import { Api } from '../../Api'
+import { API } from '../../API'
 import AlertMessage from '../partials/AlertMessage'
 import { useGlobalContext } from '../../hooks/useGlobalContext'
 import ViewDetails from './ViewDetails'
@@ -19,7 +19,7 @@ const ViewContainer = () => {
     useEffect(() => {
         const getItem = async () => {
             try {
-                const response = await axios.get(`${Api}/${_id}`)
+                const response = await axios.get(`${API}/${_id}`)
                 const item = response.data
                 dispatch({ type: 'SET_ITEM', payload: { item } })
             } catch (err) {

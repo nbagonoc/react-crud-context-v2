@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { Api } from '../../Api'
+import { API } from '../../API'
 import AlertMessage from '../partials/AlertMessage'
 import { useGlobalContext } from '../../hooks/useGlobalContext'
 
@@ -22,7 +22,7 @@ export const EditForm = () => {
 
         const getItem = async () => {
             try {
-                const response = await axios.get(`${Api}/${_id}`)
+                const response = await axios.get(`${API}/${_id}`)
                 const item = response.data
                 setFormData({
                     name: item.name,
@@ -66,7 +66,7 @@ export const EditForm = () => {
                 weight: formData.weight,
                 size: formData.size,
             }
-            const response = await axios.put(`${Api}/${_id}`, item)
+            const response = await axios.put(`${API}/${_id}`, item)
             const message = response.data.success.message
             dispatch({
                 type: 'EDIT_ITEM',
